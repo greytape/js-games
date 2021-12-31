@@ -1,0 +1,7 @@
+input: .
+output: .retype
+url: # Add your website address here
+branding:
+  title: Javascript Game Dev
+footer:
+  copyright: "&copy; Copyright Olly Chadwick {{ year }}. All rights reserved."
