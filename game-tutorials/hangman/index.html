@@ -9,27 +9,29 @@
     <!-- Primary Meta Tags -->
     <title>Hangman</title>
     <meta name="title" content="Hangman">
-    <meta name="description" content="Hangman is a pencil and paper spelling game. The player attempts to guess the letters in a word." />
+    <meta name="description" content="Hangman" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://greytape.github.io/js-games/game-tutorials/hangman/">
     <meta property="og:title" content="Hangman">
-    <meta property="og:description" content="Hangman is a pencil and paper spelling game. The player attempts to guess the letters in a word.">
+    <meta property="og:description" content="Hangman">
+    <meta property="og:image" content="https://greytape.github.io/js-games/js-games/game-tutorials/hangman/hangman_cartridge_cover.gif">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://greytape.github.io/js-games/game-tutorials/hangman/">
     <meta property="twitter:title" content="Hangman">
-    <meta property="twitter:description" content="Hangman is a pencil and paper spelling game. The player attempts to guess the letters in a word.">
+    <meta property="twitter:description" content="Hangman">
+    <meta property="twitter:image" content="https://greytape.github.io/js-games/js-games/game-tutorials/hangman/hangman_cartridge_cover.gif">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/js-games/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/js-games/resources/css/retype.css?v=1.11.2.695903592025" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/js-games/resources/css/retype.css?v=1.11.2.695913973217" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/js-games/resources/js/config.js?v=1.11.2.695903592025" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/js-games/resources/js/config.js?v=1.11.2.695913973217" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/js-games/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/js-games/resources/js/lunr.js?v=1.11.2.695903592025" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/js-games/resources/js/lunr.js?v=1.11.2.695913973217" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -170,6 +172,14 @@
         <span>Hangman</span>
     </h1>
 </doc-anchor-target>
+<p><figure class="content-center">
+    <img src="hangman_cartridge_cover.gif" alt="Hangman" />
+    <figcaption class="caption">Hangman</figcaption>
+</figure>
+</p>
+<p><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-blue-600 bg-blue-100 h-6 px-2 text-xs rounded-md">
+    <span>Easy</span>
+</span></p>
 <p>Hangman is a pencil and paper spelling game. The player attempts to guess the letters in a word. They are only allowed a certain number of incorrect guesses before the game ends. My main experience of it was something that teachers did towards the end of a lesson at school, if we had run out of things to learn. The first video game version was released in 1976.</p>
 <p>Hangman is an easy game to try and create. It relies on basic string manipulation, logical flows and has almost nothing in the way of graphics. It is actually a nice first game to try. I created my own version for this tutorial.</p>
 <p>You can find the code for the game <a href="https://github.com/greytape/hangman">here</a></p>

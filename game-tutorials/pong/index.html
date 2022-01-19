@@ -7,21 +7,23 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>Basic design</title>
-    <meta name="title" content="Basic design">
-    <meta name="description" content="This gives a basic run through of the code in the hangman game. It's not a step-by-step tutorial (although I could adapt it into one)." />
+    <title>Pong</title>
+    <meta name="title" content="Pong">
+    <meta name="description" content="Pong Logo - concept" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://greytape.github.io/js-games/game-tutorials/hangman/basic-design/">
-    <meta property="og:title" content="Basic design">
-    <meta property="og:description" content="This gives a basic run through of the code in the hangman game. It's not a step-by-step tutorial (although I could adapt it into one).">
+    <meta property="og:url" content="https://greytape.github.io/js-games/game-tutorials/pong/">
+    <meta property="og:title" content="Pong">
+    <meta property="og:description" content="Pong Logo - concept">
+    <meta property="og:image" content="https://greytape.github.io/js-games/js-games/game-tutorials/pong/pong_logo.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://greytape.github.io/js-games/game-tutorials/hangman/basic-design/">
-    <meta property="twitter:title" content="Basic design">
-    <meta property="twitter:description" content="This gives a basic run through of the code in the hangman game. It's not a step-by-step tutorial (although I could adapt it into one).">
+    <meta property="twitter:url" content="https://greytape.github.io/js-games/game-tutorials/pong/">
+    <meta property="twitter:title" content="Pong">
+    <meta property="twitter:description" content="Pong Logo - concept">
+    <meta property="twitter:image" content="https://greytape.github.io/js-games/js-games/game-tutorials/pong/pong_logo.jpg">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/js-games/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -30,7 +32,6 @@
     <script type="text/javascript" src="/js-games/resources/js/config.js?v=1.11.2.695913973217" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/js-games/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
     <script id="lunr-js" type="text/javascript" src="/js-games/resources/js/lunr.js?v=1.11.2.695913973217" defer></script>
-    <script id="prism-js" type="text/javascript" src="/js-games/resources/js/prism.js?v=1.11.2.695913973217" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -165,120 +166,33 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="basic-design" class="break-words">
+<doc-anchor-target id="pong" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#basic-design">#</doc-anchor-trigger>
-        <span>Basic design</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#pong">#</doc-anchor-trigger>
+        <span>Pong</span>
     </h1>
 </doc-anchor-target>
-<p>This gives a basic run through of the code in the hangman game. It&#x27;s not a step-by-step tutorial (although I could adapt it into one).</p>
-<p>The basic logic of the game runs whenever the user presses a key.</p>
-<doc-anchor-target id="constants">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#constants">#</doc-anchor-trigger>
-        <span>Constants</span>
-    </h3>
-</doc-anchor-target>
-<p>At the top of the file you&#x27;ll see a couple of constants.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-javascript"><code v-pre class="language-javascript">const words = [
-  &quot;acid&quot;,
-  &quot;blade&quot;,
-  &quot;country&quot;,
-  // lots of other words...
-]
-const alphabet = [&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,&quot;E&quot;,&quot;F&quot;,&quot;G&quot;,&quot;H&quot;,&quot;I&quot;,&quot;J&quot;,&quot;K&quot;,&quot;L&quot;,&quot;M&quot;,&quot;N&quot;,&quot;O&quot;,&quot;P&quot;,&quot;Q&quot;,&quot;R&quot;,&quot;S&quot;,&quot;T&quot;,&quot;U&quot;,&quot;V&quot;,&quot;W&quot;,&quot;X&quot;,&quot;Y&quot;,&quot;Z&quot;];</code></pre>
-</doc-codeblock></div>
-<p>These are really important to the logic of the game. The purpose of the word list is pretty clear. We need to randomly choose one of the words from this list when we start the game.</p>
-<p>The list of letters in the alphabet is perhaps less obvious. We need a list of all the letters in the alphabet to check that the user has pressed a letter key, rather than some other irrelevant key (eg <code v-pre>7</code> or <code v-pre>Ctrl</code>).</p>
-<doc-anchor-target id="variables">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#variables">#</doc-anchor-trigger>
-        <span>Variables</span>
-    </h3>
-</doc-anchor-target>
-<p>Also at the top of the file, we declare a number of variables. You can think of this as the information that the game needs to keep track of in order to carry out its logic.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-javascript"><code v-pre class="language-javascript">let word = null;
-let currentGuessedLetters = [];
-let currentWordContainer = null;
-let imageContainer = null;
-let guessedLettersContainer = null;
-let incorrectGuessNumber = 0;</code></pre>
-</doc-codeblock></div>
-<p>Three of the variables are HTML elements (<code v-pre>currentWordContainer</code>, <code v-pre>imageContainer</code>, <code v-pre>guessedLettersContainer</code>). These are parts of the page that we might need to update each time the player makes a guess.</p>
-<p>The other three are key data, which we use to answer questions like:</p>
+<p><figure class="content-center">
+    <img src="pong_logo.jpg" alt="Pong Logo - concept" />
+    <figcaption class="caption">Pong Logo - concept</figcaption>
+</figure>
+</p>
+<p><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-blue-600 bg-blue-100 h-6 px-2 text-xs rounded-md">
+    <span>Medium</span>
+</span></p>
+<p>Pong is one of the very first computer games, <a href="https://en.wikipedia.org/wiki/Pong">released in 1972</a>. It was also the first computer game that made any money, which set us on the road to the big budget game industry that we have today.</p>
+<p>This version is taken from an excellent code tutorial from <em>codeheir.com</em>, which you can find <a href="https://codeheir.com/2019/02/04/how-to-code-pong-1972-1/">here</a>.</p>
+<p>The game uses the <a href="https://p5js.org/">p5.js</a> javascript library. This is a library that has a lot of built-in support for rendering images, and interacting with the user, which makes it great for simple games development.</p>
+<p>Generally, it&#x27;s best to try and stay away from frameworks and libraries when learning to code. They speed up development, but abstract away a lot of the logic. You should learn to add and subtract with a pen and paper before starting to use a calculator. Similarly, you should work without a framework first. This will helps you understand what the framework is actually doing under the hood.</p>
+<p>Therefore, I&#x27;d recommend only attempting this project once you&#x27;ve already created another javascript game.</p>
+<p>You can find the code for the game <a href="https://github.com/greytape/pong">here</a>.</p>
+<p>You can find a working version of the game <a href="https://greytape.github.io/pong/">here</a>.</p>
+<p>Possible extensions:</p>
 <ul>
-<li>what is the current word the user is trying to guess?</li>
-<li>which letters has the player guessed already?</li>
-<li>how many incorrect guesses has the player used so far?</li>
+<li>make a two player version, rather than relying on the AI</li>
+<li>add a scoring system</li>
+<li>make the size of the paddles change as you play the game. Perhaps your paddle should shrink in size if you&#x27;re winning to try and even up the game?</li>
 </ul>
-<doc-anchor-target id="starting-the-game">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#starting-the-game">#</doc-anchor-trigger>
-        <span>Starting the game</span>
-    </h3>
-</doc-anchor-target>
-<p>When the page loads, we run the following code. This uses the <code v-pre>getElementById</code> method to find the HTML elements that we&#x27;re going to be updating, and then assign them to the variables that we declared at the top of the file.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-javascript"><code v-pre class="language-javascript">document.addEventListener('DOMContentLoaded', () =&gt; {
-  currentWordContainer = document.getElementById('current-word-container');
-  imageContainer = document.getElementById('image-container');
-  guessedLettersContainer = document.getElementById('guessed-letters-container');
-  document.addEventListener('keydown', newGuess);
-  startNewGame();
-});</code></pre>
-</doc-codeblock></div>
-<p>We then call the function <code v-pre>startNewGame</code>.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-javascript"><code v-pre class="language-javascript">function startNewGame() {
-  word = getNewWord().toUpperCase();
-  currentGuessedLetters = [];
-  incorrectGuessNumber = 0;
-  renderContent();
-};</code></pre>
-</doc-codeblock></div>
-<p>Here we are resetting all the data from previous games. We empty the array of <code v-pre>currentGuessedLetters</code>, we choose a new word from the list etc.</p>
-<p>We then call the <code v-pre>renderContent</code> function. This updates the HTML elements (the various <code v-pre>containers</code>) with the current state of the game. We will call <code v-pre>renderContent</code> after each guess the user makes.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-javascript"><code v-pre class="language-javascript">function renderContent() {
-  currentWordContainer.textContent = wordWithGuessedLetters().join(' ');
-  guessedLettersContainer.textContent = incorrectlyGuessedLetters().join(' ');
-  setLatestImage();
-}</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="making-a-guess">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#making-a-guess">#</doc-anchor-trigger>
-        <span>Making a guess</span>
-    </h3>
-</doc-anchor-target>
-<p>The core logic of the game is triggered whenever a user makes a guess by pressing a key.</p>
-<p>You can see this in the code below. We&#x27;re adding an <code v-pre>EventListener</code> to the page, so that whenever a user presses a key, it invokes the <code v-pre>newGuess</code> function.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-javascript"><code v-pre class="language-javascript">document.addEventListener('keydown', newGuess);</code></pre>
-</doc-codeblock></div>
-<p>Let&#x27;s have a look at <code v-pre>newGuess</code>.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-javascript"><code v-pre class="language-javascript">function newGuess(event) {
-  key = event.key.toUpperCase();
-  if (invalidKey(key)) return null;
-
-  currentGuessedLetters.push(key);
-  checkLatestGuess(key);
-  renderContent();
-  checkEndGameConditions();
-}</code></pre>
-</doc-codeblock></div>
-<ul>
-<li>We first convert the key to a capital letter (it easier for us to compare these letters against previous guesses if they are all in the same case.).</li>
-<li>We then check that the key that has been pressed is a valid one (eg a letter key) using the <code v-pre>invalidKey</code> function.</li>
-<li>We add the new guessed letter to <code v-pre>currentGuessedLetters</code> array.</li>
-<li>We <code v-pre>checkLatestGuess</code> to see whether it is a correct guess or not.</li>
-<li>We <code v-pre>renderContent</code> to update the page with the new information we have received.</li>
-<li>We check to see if we can end the game yet with <code v-pre>checkEndGameConditions</code>.</li>
-</ul>
-<p>This is a quick overview of the code. Keep digging to see if you can track down each part of it, until you fully understand how the game works.</p>
 
 
 
@@ -290,20 +204,20 @@ let incorrectGuessNumber = 0;</code></pre>
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/js-games/game-tutorials/hangman/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/js-games/game-tutorials/breakout/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">Hangman</span>
+                <span class="block mt-1">Breakout</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/js-games/game-tutorials/breakout/">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/js-games/how-to-guides/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">Breakout</span>
+                <span class="block mt-1">How to Guides</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -351,6 +265,6 @@ let incorrectGuessNumber = 0;</code></pre>
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Basic design", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Pong", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>
