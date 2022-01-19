@@ -1,0 +1,1 @@
+ - [Why Simple Games](/articles/why-simple-games/index.md)

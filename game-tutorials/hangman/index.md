@@ -1,4 +1,8 @@
-# Hangman
+# Hangman 
+
+![Hangman](Hangman_cartridge_cover.gif)
+
+[!badge Easy]
 
 Hangman is a pencil and paper spelling game. The player attempts to guess the letters in a word. They are only allowed a certain number of incorrect guesses before the game ends. My main experience of it was something that teachers did towards the end of a lesson at school, if we had run out of things to learn. The first video game version was released in 1976.
 

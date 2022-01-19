@@ -1,6 +1,6 @@
 # Welcome
 
-This is a site that contains learning resources for learning how to program simple web games in Javascript. It was originally intended as a resource for teaching people Javascript by teaching them how to create simple web games.
+This is a site that contains learning resources for learning how to program simple web games in Javascript.
 
 ## How to use this site
 
