@@ -4,7 +4,9 @@ Hangman is a pencil and paper spelling game. The player attempts to guess the le
 
 Hangman is an easy game to try and create. It relies on basic string manipulation, logical flows and has almost nothing in the way of graphics. It is actually a nice first game to try. I created my own version for this tutorial.
 
-Here is the github repo for the Hangman game, and here is the final version of what we're trying to create.
+You can find the code for the game [here](https://github.com/greytape/hangman)
+
+You can play a version of the game [here](https://greytape.github.io/hangman/)
 
 In this version:
 
